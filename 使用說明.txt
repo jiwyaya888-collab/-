@@ -1,0 +1,18 @@
+NAI 生圖腳本：pkppkq 共享站相容版
+
+基於使用者提供的 nai-v1.0.1/index.js 修改。原始作者 sanmingyue。
+
+使用：
+1. 備份原酒館助手腳本。在原腳本的 JavaScript 編輯區，用 nai-pkppkq.js 的全部內容取代原本內容並儲存。不要與原版同時執行，否則可能重複生圖。
+2. 開啟「NAI設置」→「設置」→「使用 pkppkq 共享站」。首次使用務必點這個按鈕；預設仍保留原版官方端點。
+3. 在 https://nai.pkppkq.bond/ 登入自己的帳號，點「查看我的 API Key」，把本站 Key 貼入腳本的 API Key 欄位。鑑權使用 Bearer。
+4. 若網站顯示的 Base URL 不同，以網站提供的為準。腳本接受完整生圖路徑，也接受根網址或 /v1，後兩者會自動補上 /ai/generate-image。
+5. 點「測試生圖」（會送出實際生圖請求，可能依本站規則扣額度）。成功後即可使用原本的 <nai-image> 工作流程。
+
+變更：增加站點快捷選項；跨站切換清空舊 Key；補全 Base URL；不傳送 Cookie，不跟隨 HTTP 重新導向；改善鑑權及網路提示，記錄站點診斷標頭；免費文字改為估算。
+
+保留原版的模型、提示詞、快取和重繪功能。不會自動切換至官方重試。模型請使用本站支援的名稱。
+
+驗證範圍：確認本站 /ai/generate-image 及 /v1/ai/generate-image 對無 Key 的 POST 回傳 401 GATEWAY_KEY_INVALID；確認跨域預檢允許 authorization/content-type。通過 JavaScript 語法與端點補全測試。未持有有效 Key，尚未驗證成功生圖回應；目前沿用原版 PNG/WebP/ZIP 解析，若站點返回 JSON 任務格式則需另加處理。
+
+提醒：共享站 Key 會送至所填端點，仍以原文存於酒館助手腳本變數。圖片預設快取七天，重要圖片請下載。共享站不保證避免封號，實際額度與費用以站點規則為準。
